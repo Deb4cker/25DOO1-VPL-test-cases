@@ -16,7 +16,7 @@ public class InteiroPositivoAvancadoTest
 
     @Test
     public void deveSerPositivo() {
-        mensagemBase = "O inteiro positivo não deve ser negativo, porém, o construtor da classe permitiu que %d fosse considerado um valor!";
+        mensagemBase = "\nO inteiro positivo não deve ser negativo, porém, o construtor da classe permitiu que %d fosse considerado um valor!\n";
         int[] valoresDeTeste = new int[]{10, -2, -8, 0, 12092};
 
         boolean ehNegativo;
@@ -37,13 +37,13 @@ public class InteiroPositivoAvancadoTest
         boolean alterouComInputNegativo = numero.setValor(-18);
         boolean alterouComInputPositivo = numero.setValor(120);
 
-        assertFalse("Não deve alterar com input negativo.", alterouComInputNegativo);
-        assertTrue("Deve alterar com input positivo.", alterouComInputPositivo);
+        assertFalse("\nNão deve alterar com input negativo.\n", alterouComInputNegativo);
+        assertTrue("\nDeve alterar com input positivo.\n", alterouComInputPositivo);
     }
 
     @Test
     public void deveRetornarSeEhImpar() {
-        mensagemBase = "É %s que %d é impar!";
+        mensagemBase = "\nÉ %s que %d é impar!\n";
         final int[] valoresDeTeste = new int[]{10, 2, 7, 0, 12095};
 
         InteiroPositivo inteiroPositivo = new InteiroPositivo(1);
@@ -59,7 +59,7 @@ public class InteiroPositivoAvancadoTest
 
     @Test
     public void deveRetornarArrayDeDivisoresCorretamente() {
-        mensagemBase = "Array incorreto! \nNúmero testado: %d \nEsperado %s \nRetornou: %s";
+        mensagemBase = "\nArray incorreto! \nNúmero testado: %d \nEsperado: %s \nRetornou: %s\n";
         int[] valoresTeste = new int[]{12, 36, 0, 7, 8, 41, 57, 13, 11, 5, 19, 24, 76, 22, 100};
         Map<Integer, int[]> tabelaDivisores = gerarTabelaDivisores();
 
@@ -90,7 +90,7 @@ public class InteiroPositivoAvancadoTest
 
     @Test
     public void deveRetornarFuncaoHCorreta() {
-        mensagemBase = "h(%d) deve ser igual a %.4f";
+        mensagemBase = "\nh(%d) deve ser igual a %.4f\n";
         double[] resultadosEsperados = {
                 0,      //i = 00;
                 1,      //i = 01;
@@ -120,7 +120,7 @@ public class InteiroPositivoAvancadoTest
 
     @Test
     public void deveRetornarFuncaoPCorreta() {
-        mensagemBase = "p(%d) deve ser igual a %.4f";
+        mensagemBase = "\np(%d) deve ser igual a %.4f\n";
         final double[] resultadosEsperados = {
                 0,           //i = 00;
                 0.5,         //i = 01;
@@ -149,7 +149,7 @@ public class InteiroPositivoAvancadoTest
 
     @Test
     public void deveRetornarRaizQuadradaCorretamente() {
-        mensagemBase = "A raiz quadrada de %d é %d";
+        mensagemBase = "\nA raiz quadrada de %d é %d. Resultado obtido: %.4f\n";
         final int iNumero = 0;
         final int iRaiz = 1;
 
@@ -168,7 +168,7 @@ public class InteiroPositivoAvancadoTest
             numeroReal = tupla[iNumero];
             numero = new InteiroPositivo(tupla[iNumero]);
             raiz = tupla[iRaiz];
-            mensagem = String.format(mensagemBase, numeroReal, raiz);
+            mensagem = String.format(mensagemBase, numeroReal, raiz, numero.raizQuadrada());
             assertEquals(mensagem, raiz, numero.raizQuadrada(), DELTA);
         }
     }
