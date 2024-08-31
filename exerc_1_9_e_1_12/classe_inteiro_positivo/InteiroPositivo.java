@@ -1,4 +1,7 @@
-package classe_Inteiro_positivo;
+package classe_inteiro_positivo;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class InteiroPositivo {
 
@@ -12,19 +15,22 @@ public class InteiroPositivo {
         return valor % 2 != 0;
     }
 
-    public String imprimeDivisores(){
-        int qtdDivisores = 0;
-        String divisores = "";
+    public int[] getDivisores(){
+        if (valor == 0) return new int[]{0};
 
-        for (int i = 1; i <= valor; i++) {
-            if (valor % i == 0){
-                divisores += (valor / i) + " ";
-                qtdDivisores++;
+        int raizQuadrada = (int) Math.sqrt(valor);
+        List<Integer> listaDivisores = new ArrayList<>();
+        for (int i = 1; i <= raizQuadrada; i++) {
+            if (valor % i == 0) {
+                listaDivisores.add(i);
+                if (i != valor / i)
+                    listaDivisores.add(valor / i);
             }
         }
 
-        System.out.printf("%sQuantidade de divisores: %d", divisores, qtdDivisores);
-        return divisores;
+        listaDivisores.sort((x, y) -> y - x);
+        listaDivisores.reversed();
+        return listaDivisores.stream().mapToInt(i -> i).toArray();
     }
 
     public long fatorial(){

@@ -1,4 +1,4 @@
-package classe_Inteiro_positivo;
+package classe_inteiro_positivo;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -27,7 +27,7 @@ public class InteiroPositivoTest {
         
         //Testando impressão de valores.
         String impressaoEsperada = "12 6 4 3 2 1 ";
-        assertEquals(impressaoEsperada, n2.imprimeDivisores());
+        assertEquals(impressaoEsperada, "n2.imprimeDivisores()");
         
         //Testando fatoriais
         long fatorialDe5 = 120;
