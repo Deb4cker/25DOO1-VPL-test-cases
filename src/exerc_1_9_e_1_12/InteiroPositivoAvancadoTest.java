@@ -16,25 +16,28 @@ public class InteiroPositivoAvancadoTest
 
     @Test
     public void testeValorNegativo() {
+        final String titulo = "Teste de verificação entrada de valores negativos:";
         final InteiroPositivo inteiroPositivo = new InteiroPositivo();
         final boolean alterouComInputNegativo = inteiroPositivo.setValor(-18);
         final boolean alterouComInputPositivo = inteiroPositivo.setValor(120);
 
-        assertFalse("\nNão deve alterar com input negativo.\n", alterouComInputNegativo);
-        assertTrue("\nDeve alterar com input positivo.\n", alterouComInputPositivo);
+        assertFalse(titulo + "\nNão deve alterar com input negativo.\n", alterouComInputNegativo);
+        assertTrue(titulo + "\nDeve alterar com input positivo.\n", alterouComInputPositivo);
     }
 
     @Test
     public void testeValorZero() {
+        final String titulo = "Teste de verificação de entrada de valor 0:";
         final InteiroPositivo inteiroPositivo = new InteiroPositivo();
         final boolean alterouComInputNegativo = inteiroPositivo.setValor(0);
 
-        assertFalse("\nNão deve alterar com valor 0!.\n", alterouComInputNegativo);
+        assertFalse(titulo + "\nNão deve alterar com valor 0!.\n", alterouComInputNegativo);
     }
 
     @Test
     public void testeEhImpar() {
-        mensagemBase = "\nÉ %s que %d é impar!\n";
+        final String titulo = "Teste do metodo \"ehImpar()\":";
+        mensagemBase = titulo + "\nÉ %s que %d é impar!\n";
         final int[] valoresDeTeste = new int[]{10, 2, 7, 1, 12095};
 
         final InteiroPositivo inteiroPositivo = new InteiroPositivo();
@@ -50,7 +53,8 @@ public class InteiroPositivoAvancadoTest
 
     @Test
     public void testeDivisores() {
-        mensagemBase = "\nArray incorreto! \nNúmero testado: %d \nEsperado: %s \nRetornou: %s\n";
+        final String titulo = "Teste de verificação de divisores:";
+        mensagemBase = titulo + "\nArray incorreto! \nNúmero testado: %d \nEsperado: %s \nRetornou: %s\n";
         final int[] valoresTeste = new int[]{12, 36, 1, 7, 8, 41, 57, 13, 11, 5, 19, 24, 76, 22, 100};
         final Map<Integer, int[]> tabelaDivisores = gerarTabelaDivisores();
 
@@ -68,7 +72,8 @@ public class InteiroPositivoAvancadoTest
 
     @Test
     public void testeFatorial() {
-        mensagemBase = "O fatorial de %d é %d, mas o cálculo retornou %d";
+        final String titulo = "Teste do método \"fatorial()\":";
+        mensagemBase = titulo + "O fatorial de %d é %d, mas o cálculo retornou %d";
         final InteiroPositivo inteiroPositivo = new InteiroPositivo();
         final int[] fatoriaisDeZeroADez = {1, 1, 2, 6, 24, 120, 720, 5040, 40320, 362880, 3628800};
 
@@ -85,7 +90,8 @@ public class InteiroPositivoAvancadoTest
 
     @Test
     public void testeFuncaoH() {
-        mensagemBase = "\nh(%d) deve ser igual a %.4f\n";
+        final String titulo = "Teste do método \"h()\":";
+        mensagemBase = titulo + "\nh(%d) deve ser igual a %.4f\n";
         final double[] resultadosEsperados = {
                 1,      //i = 01;
                 1.5,    //i = 02;
@@ -114,7 +120,8 @@ public class InteiroPositivoAvancadoTest
 
     @Test
     public void testeFuncaoP() {
-        mensagemBase = "\np(%d) deve ser igual a %.4f\n";
+        final String titulo = "Teste do método \"p()\":";
+        mensagemBase = titulo + "\np(%d) deve ser igual a %.4f\n";
         final double[] resultadosEsperados = {
                 0.5,         //i = 01;
                 0.4166,      //i = 02;
@@ -142,7 +149,8 @@ public class InteiroPositivoAvancadoTest
 
     @Test
     public void testeRaizQuadrada() {
-        mensagemBase = "\nA raiz quadrada de %d é %d.\nResultado obtido: %.4f\n";
+        final String titulo = "Teste do método \"raizQuadrada()\":";
+        mensagemBase = titulo + "\nA raiz quadrada de %d é %d.\nResultado obtido: %.4f\n";
         final int iNumero = 0;
         final int iRaiz = 1;
 

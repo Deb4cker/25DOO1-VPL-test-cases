@@ -14,12 +14,6 @@ public class ArrayInteiros {
         return array;
     }
 
-    public String imprimirArray() {
-        String arrayString = Arrays.toString(array); // = "[ a, b, c, d ]"
-        arrayString.replaceAll("[\\[\\]]", ""); // = "a, b, c, d"
-        return arrayString;
-    }
-
     public boolean setValor(int index, int valor){
         boolean indexValido = index >= 0 && index < array.length;
         if (indexValido) array[index] = valor;
@@ -54,9 +48,10 @@ public class ArrayInteiros {
     public void ordenar(){
         Arrays.sort(array);
     }
-    
+
     @Override
     public String toString(){
-        return Arrays.toString(array);
+        String arrayString = Arrays.toString(array); // = "[ a, b, c, d ]"
+        return arrayString.substring(1, arrayString.length() - 1); // = "a, b, c, d"
     }
 }
