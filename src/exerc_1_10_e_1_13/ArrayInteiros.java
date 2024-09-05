@@ -1,14 +1,13 @@
-package classe_array_inteiros;
+package exerc_1_10_e_1_13;
 
 import java.util.Arrays;
-import java.util.Scanner;
 
 public class ArrayInteiros {
 
     private final int[] array;
 
     public ArrayInteiros(int tamanho){
-        array = new int[tamanho];
+        array = new int[Math.max(tamanho, 0)];
     }
 
     public int[] getArray(){
@@ -16,7 +15,9 @@ public class ArrayInteiros {
     }
 
     public String imprimirArray() {
-        return Arrays.toString(array).replaceAll("[\\[\\]]", "");
+        String arrayString = Arrays.toString(array); // = "[ a, b, c, d ]"
+        arrayString.replaceAll("[\\[\\]]", ""); // = "a, b, c, d"
+        return arrayString;
     }
 
     public boolean setValor(int index, int valor){
@@ -30,10 +31,18 @@ public class ArrayInteiros {
         return false;
     }
 
-    public int maiorValor(){
+    public int maior(){
+        int indexMaior = 0;
         int maiorValor = array[0];
-        for (int j : array) maiorValor = Math.max(j, maiorValor);
-        return maiorValor;
+
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] > maiorValor) {
+                maiorValor = array[i];
+                indexMaior = i;
+            }
+        }
+
+        return indexMaior;
     }
 
     public int[] frequenciaAbsoluta(){

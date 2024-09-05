@@ -1,4 +1,4 @@
-package classe_inteiro_positivo;
+package exerc_1_9_e_1_12;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -8,8 +8,10 @@ public class InteiroPositivoTest {
     @Test
     public void testInteiroPositivo(){
         //Testando se são construídos números negativos.
-        InteiroPositivo n1 = new InteiroPositivo(11);
-        InteiroPositivo n2 = new InteiroPositivo(-2);
+        InteiroPositivo n1 = new InteiroPositivo();
+        n1.setValor(11);
+        InteiroPositivo n2 = new InteiroPositivo();
+        n2.setValor(-2);
         
         assertEquals(n1.getValor() >= 0, true);
         assertEquals(n2.getValor() >= 0, true);
@@ -39,18 +41,19 @@ public class InteiroPositivoTest {
         assertEquals(fatorialDe5, n1.fatorial());
         assertEquals(fatorialDe7, n2.fatorial());
         
-        InteiroPositivo n3 = new InteiroPositivo(10);
+        InteiroPositivo n3 = new InteiroPositivo();
+        n3.setValor(5);
         double formatoDeCasasDepoisDaVirgula = 0.0001;
         
         //Testando o h(x)
         double resultadoEsperado = 2.9289; //h(10) = 2.9289
-        double hx = n3.funcaoH();
+        double hx = n3.h();
         
         assertEquals(resultadoEsperado, hx, formatoDeCasasDepoisDaVirgula);
         
         //Testando o p(x)
         resultadoEsperado = 0.420735492; //p(10) = 0.420735492
-        double px = n3.funcaoP();
+        double px = n3.p();
         
         assertEquals(resultadoEsperado, px, formatoDeCasasDepoisDaVirgula);
         

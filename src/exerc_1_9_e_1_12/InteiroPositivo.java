@@ -1,12 +1,8 @@
-package classe_inteiro_positivo;
+package exerc_1_9_e_1_12;
 
 public class InteiroPositivo {
 
     private int valor;
-
-    public InteiroPositivo(int valor) {
-        this.valor = Math.max(valor, 0);
-    }
 
     public boolean ehImpar(){
         return valor % 2 != 0;
@@ -38,15 +34,15 @@ public class InteiroPositivo {
         return resultado;
     }
 
-    public double funcaoH(){
+    public double h(){
         double resultado = 0;
         for (int i = 1; i<= valor; i++) resultado += (double) 1 / i ;
         return resultado;
     }
 
-    public double funcaoP(){
+    public double p(){
         double resultado = 0;
-        InteiroPositivo dobro = new InteiroPositivo(0);
+        InteiroPositivo dobro = new InteiroPositivo();
 
         for (int i = 1; i <= valor; i++){
             dobro.setValor(i*2);

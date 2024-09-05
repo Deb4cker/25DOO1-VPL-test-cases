@@ -1,12 +1,7 @@
-package classe_array_inteiros;
+package exerc_1_10_e_1_13;
 
-//import static org.junit.jupiter.api.Assertions.*;
-//import org.junit.jupiter.api.Test;
-
-import org.junit.Test;
-
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 public class ArrayInteirosTest
 {
@@ -33,7 +28,7 @@ public class ArrayInteirosTest
         assertEquals(array.contem(11), false);
         
         //Testando maior valor
-        assertEquals(99, array.maiorValor());
+        assertEquals(99, array.maior());
         
         //Testando o método de frequencia absoluta
         int[] arrayGabarito = new int[101]; //sabendo que o array de inteiros primitivos é iniciado com 0 em todas as posições;
