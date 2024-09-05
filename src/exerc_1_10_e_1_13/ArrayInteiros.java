@@ -10,7 +10,7 @@ public class ArrayInteiros {
         array = new int[Math.max(tamanho, 0)];
     }
 
-    public int[] getArray(){
+    public int[] getArrayInteiros(){
         return array;
     }
 

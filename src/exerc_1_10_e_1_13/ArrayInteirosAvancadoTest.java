@@ -31,29 +31,38 @@ public class ArrayInteirosAvancadoTest
     public void testeSetValor(){
         final String titulo = "Teste do metodo \"setValor()\":";
         mensagem = titulo +"\nO metodo \"set\" permitiu a entrada de um index negativo!";
-        final ArrayInteiros array = new ArrayInteiros(10);
-        boolean entrouValorInvalidoNoArray = array.setValor(-1, 0);
-        assertFalse(mensagem, entrouValorInvalidoNoArray);
+        try{
+            final ArrayInteiros array = new ArrayInteiros(10);
+            boolean entrouValorInvalidoNoArray = array.setValor(-1, 0);
+            assertFalse(mensagem, entrouValorInvalidoNoArray);
+        } catch (Exception e){
+            handleException(titulo, e);
+        }
     }
 
     @Test
     public void testeContem(){
         final String titulo = "Teste do método \"contem()\":";
         mensagemBase = titulo +"\nÉ %s que o número %d está no array, mas o código retornou %s.";
-        final ArrayInteiros array = createArrayInteiros();
-        final int[] arrayNaoContidos  = new int[]{78, 134, 13213, -1, 64, 98, 1300, 0, 63274, 13};
 
-        boolean contem;
-        for (int valor : arrayNaoContidos){
-            contem = array.contem(valor);
-            mensagem = String.format(mensagemBase, "falso", valor, "verdadeiro");
-            assertFalse(mensagem, contem);
-        }
+        try{
+            final ArrayInteiros array = createArrayInteiros();
+            final int[] arrayNaoContidos  = new int[]{78, 134, 13213, -1, 64, 98, 1300, 0, 63274, 13};
 
-        for(int valor : gabarito){
-            contem = array.contem(valor);
-            mensagem = String.format(mensagemBase, "verdadeiro", valor, "falso");
-            assertTrue(mensagem, contem);
+            boolean contem;
+            for (int valor : arrayNaoContidos){
+                contem = array.contem(valor);
+                mensagem = String.format(mensagemBase, "falso", valor, "verdadeiro");
+                assertFalse(mensagem, contem);
+            }
+
+            for(int valor : gabarito){
+                contem = array.contem(valor);
+                mensagem = String.format(mensagemBase, "verdadeiro", valor, "falso");
+                assertTrue(mensagem, contem);
+            }
+        } catch (Exception e){
+            handleException(titulo, e);
         }
     }
 
@@ -61,11 +70,15 @@ public class ArrayInteirosAvancadoTest
     public void testeRetornarIndexMaiorValor(){
         final String titulo = "Teste do metodo \"maior()\":";
         mensagemBase = titulo +"\nO maior valor está no index %d, mas foi retornado o index %d.\nArray de teste: %s";
-        final int indexMaiorValorGabarito = 1; //99
-        final ArrayInteiros array = createArrayInteiros();
-        final int maiorRetornado = array.maior();
-        mensagem = String.format(mensagemBase, indexMaiorValorGabarito, maiorRetornado, Arrays.toString(gabarito));
-        assertEquals(mensagem, indexMaiorValorGabarito,maiorRetornado);
+        try{
+            final int indexMaiorValorGabarito = 1; //99
+            final ArrayInteiros array = createArrayInteiros();
+            final int maiorRetornado = array.maior();
+            mensagem = String.format(mensagemBase, indexMaiorValorGabarito, maiorRetornado, Arrays.toString(gabarito));
+            assertEquals(mensagem, indexMaiorValorGabarito,maiorRetornado);
+        } catch (Exception e){
+            handleException(titulo, e);
+        }
     }
 
     @Test
@@ -77,35 +90,43 @@ public class ArrayInteirosAvancadoTest
                 "\nATENÇÃO: Se ambos parecem iguais, pode ser que esteja sobrando um espaço vazio no final." +
                 "\n(Sim, eu testei isso.)\n";
 
-        final String arrayString = "12, 99, 1, 7, 1, 4, 3, 5, 8, 3";
-        final ArrayInteiros array = createArrayInteiros();
-        mensagem = String.format(mensagemBase, arrayString, array.toString());
-        assertEquals(mensagem, arrayString, array.toString());
+        try{
+            final String arrayString = "12,99,1,7,1,4,3,5,8,3";
+            final ArrayInteiros array = createArrayInteiros();
+            mensagem = String.format(mensagemBase, arrayString, array.toString());
+            assertEquals(mensagem, arrayString, array.toString());
+        } catch (Exception e){
+            handleException(titulo, e);
+        }
     }
 
     @Test
     public void testeFrequenciaAbsoluta(){
         final String titulo = "Teste do método \"frequenciaAbsoluta()\":";
         mensagemBase = titulo +"\nO número %d aparece %d vez(es), mas a lógica apontou que ele aparece %d vez(es).";
-        final ArrayInteiros array = createArrayInteiros();
-        final int[] arrayGabarito = new int[101];
-        arrayGabarito[1]  = 2; //numero 01 aparece 2 vezes
-        arrayGabarito[3]  = 2; //numero 03 aparece 2 vezes
-        arrayGabarito[4]  = 1; //numero 04 aparece 1 vez
-        arrayGabarito[5]  = 1; //numero 05 aparece 1 vez
-        arrayGabarito[7]  = 1; //numero 07 aparece 1 vez
-        arrayGabarito[8]  = 1; //numero 08 aparece 1 vez
-        arrayGabarito[12] = 1; //numero 12 aparece 1 vez
-        arrayGabarito[99] = 1; //numero 99 aparece 1 vez
+        try{
+            final ArrayInteiros array = createArrayInteiros();
+            final int[] arrayGabarito = new int[101];
+            arrayGabarito[1]  = 2; //numero 01 aparece 2 vezes
+            arrayGabarito[3]  = 2; //numero 03 aparece 2 vezes
+            arrayGabarito[4]  = 1; //numero 04 aparece 1 vez
+            arrayGabarito[5]  = 1; //numero 05 aparece 1 vez
+            arrayGabarito[7]  = 1; //numero 07 aparece 1 vez
+            arrayGabarito[8]  = 1; //numero 08 aparece 1 vez
+            arrayGabarito[12] = 1; //numero 12 aparece 1 vez
+            arrayGabarito[99] = 1; //numero 99 aparece 1 vez
 
-        int valorGabarito;
-        int valorRecebido;
-        final int[] frequenciaAbsolutaArrayInteiros = array.frequenciaAbsoluta();
-        for (int i = 0; i < arrayGabarito.length; i ++){
-            valorGabarito = arrayGabarito[i];
-            valorRecebido = frequenciaAbsolutaArrayInteiros[i];
-            mensagem = String.format(mensagemBase, i, valorGabarito, valorRecebido);
-            assertEquals(mensagem, valorGabarito, valorRecebido);
+            int valorGabarito;
+            int valorRecebido;
+            final int[] frequenciaAbsolutaArrayInteiros = array.frequenciaAbsoluta();
+            for (int i = 0; i < arrayGabarito.length; i ++){
+                valorGabarito = arrayGabarito[i];
+                valorRecebido = frequenciaAbsolutaArrayInteiros[i];
+                mensagem = String.format(mensagemBase, i, valorGabarito, valorRecebido);
+                assertEquals(mensagem, valorGabarito, valorRecebido);
+            }
+        } catch (Exception e){
+            handleException(titulo, e);
         }
     }
 
@@ -113,13 +134,18 @@ public class ArrayInteirosAvancadoTest
     public void testeOrdenarArray(){
         final String titulo = "Teste de ordenação do array:";
         mensagemBase = titulo +"\nArray ordenado incorreto! \nEsperado: %s \nRetornou: %s\n";
-        final ArrayInteiros arrayInteiros = createArrayInteiros();
-        final int[] gabaritoOrdenado = Arrays.copyOf(gabarito, gabarito.length);
-        Arrays.sort(gabaritoOrdenado);
 
-        arrayInteiros.ordenar();
-        mensagem = String.format(mensagemBase, Arrays.toString(gabaritoOrdenado), arrayInteiros);
-        assertArrayEquals(mensagem, gabaritoOrdenado, arrayInteiros.getArray());
+        try {
+            final ArrayInteiros arrayInteiros = createArrayInteiros();
+            final int[] gabaritoOrdenado = Arrays.copyOf(gabarito, gabarito.length);
+            Arrays.sort(gabaritoOrdenado);
+
+            arrayInteiros.ordenar();
+            mensagem = String.format(mensagemBase, Arrays.toString(gabaritoOrdenado), arrayInteiros);
+            assertArrayEquals(mensagem, gabaritoOrdenado, arrayInteiros.getArrayInteiros());
+        } catch (Exception e){
+            handleException(titulo, e);
+        }
     }
 
     private ArrayInteiros createArrayInteiros(){
@@ -127,11 +153,19 @@ public class ArrayInteirosAvancadoTest
         final String tempMensagemBase = "\n"+ titulo + "\nAlgum erro ocorreu ao tentar adicionar o valor %d no index %d!\nConvém revisar a lógica!";
         final ArrayInteiros array = new ArrayInteiros(gabarito.length);
 
-        for (int i = 0; i < gabarito.length; i++) {
-            mensagem = String.format(tempMensagemBase, gabarito[i], i);
-            assertTrue(array.setValor(i, gabarito[i]));
+        try{
+            for (int i = 0; i < gabarito.length; i++) {
+                mensagem = String.format(tempMensagemBase, gabarito[i], i);
+                assertTrue(array.setValor(i, gabarito[i]));
+            }
+        } catch (Exception e){
+            handleException(titulo, e);
         }
 
         return array;
+    }
+
+    private void handleException(String titulo, Exception e){
+        fail("Uma exceção ocorreu no " + titulo + "\n" + "✏️ " + e.getMessage());
     }
 }
